@@ -1,6 +1,7 @@
 public class IcecreamToppings {
-    private double price;
+    public double price;
     public IcecreamToppings() {
         this.price = price;
     }
+
 }

@@ -1,63 +1,22 @@
-inventoryManagementSystem.java
-
-Line 3-7, Class Name Not Following Naming Convention
-The class inventoryManagementSystem violates Java's PascalCase naming convention for class names.
-Reason: Class names should begin with an uppercase letter and follow PascalCase.
-
-Line 14, Magic Number
-The warehouse IDs 1 and 2 are used directly in the code.
-
-Line 23-25, Hardcoded Strings
-Customer information like "John Doe, 123 Main St" is hardcoded.
-Reason: Hardcoding such data makes it less reusable and harder to test or modify.
 inventorySystem.java
-
-Line 5, Excessive Responsibility
-The inventorySystem class has multiple responsibilities, such as managing products, orders, and reports.
-Reason: Violates the Single Responsibility Principle (SRP).
-
-Line 9-20, Inner Class Overuse
-The Product and Order classes are defined as inner classes.
-Reason: These are better as separate top-level classes for reuse and better modularity.
-
-Line 49-77, Deeply Nested Conditionals
-The addProduct method uses deeply nested if-statements.
-Reason: Reduces readability and increases cyclomatic complexity.
-Line 84, Hardcoded Discount Logic
-
-Discount logic is hardcoded in calculateFinalPrice.
-Reason: Makes extending discount types or modifying existing logic difficult.
-Line 121-125, Method Doing Too Much
-
-The processOrder method handles both order creation and stock updating.
-Reason: This violates SRP and makes the method harder to maintain.
-
-Line 174, String Concatenation in Loops
-String concatenation is used inside a loop in GenerateInventoryReport.
-Reason: This is inefficient and should be replaced with a StringBuilder.
+<78>, <Switch Statement>, Using switch statement is itself a code smell
+<41-42>, <Long Parameter List>, addProduct method has a long parameter list
+<134>, <Conditional Complexity>, it is hard to determine that "return -1" stands for invalid order
+<80, 85, 87, 91, 93>, <Magic Numbers>, Using constant numbers like 0.8
+<140>, <Message Chain>, calls product via globalInventoryData class
+<11-19, 24-29>, <Primitive Obsession>, the nested classes hold only variables of primitive types
+<44-48>, <Nested 'if-statements'>, the try block in addProduct method has multiple nested if-statements
+<104, 112, 122>, <Unused Methods>, these 3 methods aren't used anywhere in our code
+<107, 116, 126>, <Conditional Complexity>, it's difficult to determine how the total price is being calculated
+<NA>, <Large Class>, inventorySystem class is too large, handling multiple responsibilities, which also violates "Single Responsibility Principle"
 
 globalInventoryData.java
+<9-11>, <Global Data>, Using static variables
+<17>, <Conditional Complexity>, The return statement is ambiguous and doesn't reflect how the discount is being calculated clearly
 
-Line 5-8, Global State
-HashMap objects for products, warehouses, and orders are static.
-Reason: Static global state can lead to issues with concurrent access and makes testing difficult.
+Warehouse.java
+<4-6>, <Primitive Obsession>, use of primitive data types
 
-Line 10-11, Magic Numbers
-Static counters currentProductId and currentOrderId are incremented directly without encapsulation.
-Reason: Lack of encapsulation makes it error-prone and less controlled.
-
-inventorySystem.java
-Very large class
-Reason:The class is violating SRP. product and Order two other classes can be made to follow SRP.
-
-Primitive Obsession
-Reason: Through out the class we are using int,double,String such Primitive values.
-
-Line 41-72 ,Large method
-Reason: add Product method doesnt need to calculate total price or discount
-
-Line 78-97, switch case
-Reason: switch case is used
-
-Line 112-121, Feature envy
-Reason:calculateWarehouseValue should be in warehouse class
+reportScheduler.java
+<4>, <Freeloader Method>, the "scheduleReport" method is unused
+ <Freeloader Class>, the class is unused
